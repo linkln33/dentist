@@ -28,6 +28,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'EyeCare Clinic - Professional Eye Care Services',
+        type: 'image/png',
       },
     ],
   },
@@ -47,6 +48,10 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  other: {
+    'telegram:channel': '@eyecareclinic',
+    'telegram:site': 'https://krisi-eyes.netlify.app',
   },
   verification: {
     google: 'your-google-verification-code',
