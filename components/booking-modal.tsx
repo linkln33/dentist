@@ -40,8 +40,10 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     
     try {
       // Create Google Calendar link for both parties
+      console.log('Selected date:', selectedDate, 'Selected time:', selectedTime)
       const startDate = new Date(selectedDate + 'T' + selectedTime.replace(' ', ''))
       const endDate = new Date(startDate.getTime() + 60 * 60 * 1000)
+      console.log('Start date:', startDate, 'End date:', endDate)
       
       const title = encodeURIComponent(`${formData.reason} - ${formData.name}`)
       const details = encodeURIComponent(`
@@ -56,13 +58,15 @@ IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
       
       const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
       const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+      console.log('Date strings:', startDateStr, endDateStr)
       
       const clinicEmail = 'info@eyecareclinic.com'
       const attendees = `${formData.email},${clinicEmail}`
       
       const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}&add=${attendees}`
+      console.log('Google Calendar URL:', googleCalendarUrl)
       
-      // Open Google Calendar as backup
+      // Open Google Calendar
       window.open(googleCalendarUrl, '_blank')
       
       // Show success message
