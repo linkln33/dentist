@@ -30,7 +30,7 @@ export function FloatingWhatsApp() {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
         <div className="relative">
           {/* Chat Options Panel */}
           {isOpen && (
@@ -92,13 +92,13 @@ export function FloatingWhatsApp() {
           {/* Main Floating Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-14 h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+            className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
             aria-label="Open contact options"
           >
             {isOpen ? (
-              <X className="h-6 w-6" />
+              <X className="h-5 w-5 md:h-6 md:w-6" />
             ) : (
-              <MessageCircle className="h-6 w-6" />
+              <MessageCircle className="h-5 w-5 md:h-6 md:w-6" />
             )}
           </button>
 
@@ -109,16 +109,6 @@ export function FloatingWhatsApp() {
         </div>
       </div>
 
-      {/* Mobile-specific floating button (smaller) */}
-      <div className="fixed bottom-4 right-4 z-50 md:hidden">
-        <button
-          onClick={handleWhatsAppClick}
-          className="w-12 h-12 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center"
-          aria-label="WhatsApp chat"
-        >
-          <MessageCircle className="h-5 w-5" />
-        </button>
-      </div>
     </>
   )
 }
