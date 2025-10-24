@@ -8,6 +8,7 @@ import { FloatingWhatsApp } from '@/components/floating-whatsapp'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://krisi-eyes.netlify.app'),
   title: 'EyeCare Clinic - Professional Eye Care Services | LASIK, Cataract Surgery & Eye Exams',
   description: 'Expert eye care services including LASIK surgery, cataract treatment, comprehensive eye exams, and pediatric care. Board-certified ophthalmologists with 15+ years experience. Book your appointment today!',
   keywords: 'eye doctor, ophthalmologist, eye exam, LASIK surgery, cataract treatment, glaucoma care, pediatric eye care, vision correction, eye clinic',
