@@ -35,7 +35,10 @@ export function Header() {
             </div>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <span>Mon-Fri: 8AM-6PM | Sat: 9AM-4PM</span>
+            <div className="flex items-center space-x-2">
+              <span className="text-lg">🇺🇸</span>
+              <span>Mon-Fri: 8AM-6PM | Sat: 9AM-4PM</span>
+            </div>
           </div>
         </div>
       </div>
@@ -99,6 +102,10 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+            <div className="flex items-center justify-center mb-4">
+              <span className="text-lg">🇺🇸</span>
+              <span className="ml-2 text-sm text-gray-600">Mon-Fri: 8AM-6PM | Sat: 9AM-4PM</span>
+            </div>
             <div className="flex flex-col space-y-4 pt-4">
               <button 
                 onClick={() => scrollToSection('home')} 

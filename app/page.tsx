@@ -505,7 +505,7 @@ export default function HomePage() {
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                  className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/30 hover:border-white/50 backdrop-blur-sm"
                   onClick={() => window.open('tel:+15551234567', '_blank')}
                 >
                   <Phone className="h-5 w-5 mr-2" />
