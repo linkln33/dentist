@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { X, Calendar, Clock, MapPin, Phone, Mail } from 'lucide-react'
+import { sendAppointmentNotification } from '@/lib/email-service'
+import { scheduleAppointmentReminders, createCalendarEvent } from '@/lib/notification-service'
 
 interface BookingModalProps {
   isOpen: boolean
@@ -24,34 +26,79 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM'
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Create Google Calendar event
-    const startDate = new Date(selectedDate + 'T' + selectedTime.replace(' ', ''))
-    const endDate = new Date(startDate.getTime() + 60 * 60 * 1000) // 1 hour later
+    const appointmentData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      reason: formData.reason,
+      date: selectedDate,
+      time: selectedTime
+    }
     
-    const title = encodeURIComponent(`${formData.reason} - ${formData.name}`)
-    const details = encodeURIComponent(`
+    try {
+      // 1. Send confirmation email to both parties
+      await sendAppointmentNotification(appointmentData)
+      
+      // 2. Schedule reminder notifications
+      await scheduleAppointmentReminders(appointmentData)
+      
+      // 3. Create calendar event for both parties
+      await createCalendarEvent(appointmentData)
+      
+      // 4. Also create Google Calendar link as backup
+      const startDate = new Date(selectedDate + 'T' + selectedTime.replace(' ', ''))
+      const endDate = new Date(startDate.getTime() + 60 * 60 * 1000)
+      
+      const title = encodeURIComponent(`${formData.reason} - ${formData.name}`)
+      const details = encodeURIComponent(`
 Patient: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Reason: ${formData.reason}
-Please call (555) 123-4567 to confirm.
-    `.trim())
-    const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
-    
-    const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-    const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-    
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}`
-    
-    // Open in new tab
-    window.open(googleCalendarUrl, '_blank')
-    
-    // Show success message
-    alert('Appointment request sent! Please check your calendar and call us to confirm.')
-    onClose()
+
+IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
+      `.trim())
+      const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
+      
+      const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+      const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+      
+      const clinicEmail = 'info@eyecareclinic.com'
+      const attendees = `${formData.email},${clinicEmail}`
+      
+      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}&add=${attendees}`
+      
+      // Open Google Calendar as backup
+      window.open(googleCalendarUrl, '_blank')
+      
+      // Show comprehensive success message
+      alert(`✅ Appointment Successfully Booked!
+
+📅 Date: ${selectedDate} at ${selectedTime}
+👤 Patient: ${formData.name}
+📧 Email: ${formData.email}
+📞 Phone: ${formData.phone}
+
+📧 Email confirmations sent to:
+• ${formData.email} (you)
+• info@eyecareclinic.com (clinic)
+
+📱 You'll receive:
+• Email confirmation immediately
+• Text reminder 24 hours before
+• Text reminder 2 hours before
+
+📞 Questions? Call us at (555) 123-4567`)
+      
+      onClose()
+      
+    } catch (error) {
+      console.error('Error booking appointment:', error)
+      alert('There was an error processing your appointment. Please call us at (555) 123-4567 to book directly.')
+    }
   }
 
   if (!isOpen) return null
