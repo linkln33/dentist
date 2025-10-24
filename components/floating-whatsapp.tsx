@@ -11,7 +11,9 @@ export function FloatingWhatsApp() {
 
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage)
-    window.open(`https://wa.me/15551234567?text=${encodedMessage}`, '_blank')
+    const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`
+    console.log('WhatsApp URL:', whatsappUrl) // Debug log
+    window.open(whatsappUrl, '_blank')
   }
 
   const handlePhoneClick = () => {
@@ -23,8 +25,12 @@ export function FloatingWhatsApp() {
   }
 
   const handleBookingClick = () => {
-    // In a real implementation, this would open a booking modal or redirect to booking page
-    window.open('/contact', '_blank')
+    // Scroll to contact section on the same page
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsOpen(false) // Close the panel
   }
 
   return (

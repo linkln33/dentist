@@ -498,6 +498,7 @@ export default function HomePage() {
                 <Button 
                   size="lg" 
                   className="healthcare-gradient text-white text-lg px-8 py-4"
+                  onClick={() => scrollToSection('contact')}
                 >
                   <Calendar className="h-5 w-5 mr-2" />
                   Book Appointment
