@@ -73,9 +73,8 @@ export default function HomePage() {
                   Book Appointment
                 </Button>
                 <Button 
-                  variant="outline" 
                   size="lg" 
-                  className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                  className="text-lg px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50 transition-all duration-300"
                   onClick={() => scrollToSection('services')}
                 >
                   <Navigation className="h-5 w-5 mr-2" />
