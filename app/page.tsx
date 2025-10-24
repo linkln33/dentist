@@ -504,8 +504,7 @@ export default function HomePage() {
                 </Button>
                 <Button 
                   size="lg" 
-                  variant="outline" 
-                  className="text-lg px-8 py-4 border-white/30 text-white hover:bg-white/30 hover:border-white/50 backdrop-blur-sm"
+                  className="text-lg px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50"
                   onClick={() => window.open('tel:+15551234567', '_blank')}
                 >
                   <Phone className="h-5 w-5 mr-2" />
@@ -553,6 +552,34 @@ export default function HomePage() {
                   Send Message
                 </Button>
               </form>
+            </div>
+          </div>
+          
+          {/* Google Map Section */}
+          <div className="mt-16">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <h3 className="text-2xl font-bold mb-6 text-center">Find Us</h3>
+              <div className="relative h-96 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.2219901290355!2d-74.00369368400567!3d40.71312937933185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s150%20Park%20Row%2C%20New%20York%2C%20NY%2010007!5e0!3m2!1sen!2sus!4v1622506541450!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="EyeCare Clinic Location"
+                ></iframe>
+              </div>
+              <div className="mt-6 text-center">
+                <Button 
+                  className="bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50"
+                  onClick={() => window.open('https://maps.google.com/maps?q=123+Medical+Plaza+Suite+200+Healthcare+City+HC+12345', '_blank')}
+                >
+                  <Navigation className="h-4 w-4 mr-2" />
+                  Get Directions
+                </Button>
+              </div>
             </div>
           </div>
         </div>

@@ -21,7 +21,7 @@ pinned_version = "5"
 [plugins.inputs]
 
 [build]
-publish = "/Users/gl1/Codes/Personal Websites/healthcare-template-system/eye-doctor-template/.next"
+publish = "/Users/gl1/Codes/Personal Websites/.next"
 publishOrigin = "config"
 commandOrigin = "config"
 command = "npm run build"
