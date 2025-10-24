@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Logo } from "@/components/logo"
 
 export function Footer() {
   return (
@@ -8,15 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">E</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">EyeCare Clinic</h3>
-                <p className="text-sm text-gray-400">Vision Excellence</p>
-              </div>
-            </div>
+            <Logo className="text-white" />
             <p className="text-gray-400 text-sm">
               Providing comprehensive eye care services with the latest technology and personalized treatment plans.
             </p>

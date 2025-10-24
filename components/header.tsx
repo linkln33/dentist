@@ -4,6 +4,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Logo } from "@/components/logo"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -35,15 +36,7 @@ export function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">E</span>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">EyeCare Clinic</h1>
-              <p className="text-sm text-gray-600">Vision Excellence</p>
-            </div>
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
