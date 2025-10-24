@@ -127,14 +127,21 @@ IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
       
       onClose()
       
-    } catch (error) {
-      console.error('Error booking appointment:', error)
-      console.error('Error details:', {
-        message: error.message,
-        stack: error.stack,
-        name: error.name
-      })
-      alert(`There was an error processing your appointment: ${error.message}. Please call us at (555) 123-4567 to book directly.`)
+    } catch (err: unknown) {
+      console.error('Error booking appointment:', err)
+      
+      if (err instanceof Error) {
+        console.error('Error details:', {
+          message: err.message,
+          stack: err.stack,
+          name: err.name
+        })
+        alert(`There was an error processing your appointment: ${err.message}. Please call us at (555) 123-4567 to book directly.`)
+      } else {
+        // fallback for non-Error throw values
+        console.error('Error details:', { message: String(err) })
+        alert('There was an error processing your appointment. Please call us at (555) 123-4567 to book directly.')
+      }
     }
   }
 
