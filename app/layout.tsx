@@ -19,11 +19,11 @@ export const metadata: Metadata = {
     description: 'Expert eye care with advanced technology. LASIK surgery, cataract treatment, comprehensive exams, and pediatric care. Book your appointment today!',
     type: 'website',
     locale: 'en_US',
-    url: 'https://eyecareclinic.com',
+    url: 'https://jobmates.netlify.app',
     siteName: 'EyeCare Clinic',
     images: [
       {
-        url: '/opengraph-image',
+        url: 'https://jobmates.netlify.app/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'EyeCare Clinic - Professional Eye Care Services',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'EyeCare Clinic - Professional Eye Care Services',
     description: 'Expert eye care with advanced technology. LASIK surgery, cataract treatment, comprehensive exams, and pediatric care.',
-    images: ['/opengraph-image'],
+    images: ['https://jobmates.netlify.app/opengraph-image'],
   },
   robots: {
     index: true,

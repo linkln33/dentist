@@ -1,0 +1,13 @@
+{
+  "/_not-found": "app/_not-found.js",
+  "/contact/page": "app/contact/page.js",
+  "/faq/page": "app/faq/page.js",
+  "/page": "app/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/icon/route": "app/icon/route.js",
+  "/about/page": "app/about/page.js",
+  "/opengraph-image/route": "app/opengraph-image/route.js",
+  "/services/page": "app/services/page.js",
+  "/testimonials/page": "app/testimonials/page.js"
+}
