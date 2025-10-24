@@ -5,6 +5,34 @@ import { X, Calendar, Clock, MapPin, Phone, Mail } from 'lucide-react'
 // import { sendAppointmentNotification } from '@/lib/email-service'
 // import { scheduleAppointmentReminders, createCalendarEvent } from '@/lib/notification-service'
 
+// Function to create Google Calendar event
+async function createGoogleCalendarEvent(eventData: any) {
+  try {
+    console.log('Creating Google Calendar event:', eventData)
+    
+    // Call our API endpoint
+    const response = await fetch('/api/calendar/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(eventData)
+    })
+    
+    if (!response.ok) {
+      throw new Error('Failed to create calendar event')
+    }
+    
+    const result = await response.json()
+    console.log('✅ Calendar event created successfully:', result)
+    return result
+    
+  } catch (error) {
+    console.error('Error creating calendar event:', error)
+    throw error
+  }
+}
+
 interface BookingModalProps {
   isOpen: boolean
   onClose: () => void
@@ -39,46 +67,66 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
     
     try {
-      // Simple Google Calendar link without complex date parsing
+      // Create Google Calendar event directly
       console.log('Booking appointment for:', formData.name, 'Date:', selectedDate, 'Time:', selectedTime)
       
-      const title = encodeURIComponent(`${formData.reason} - ${formData.name}`)
-      const details = encodeURIComponent(`
+      // Parse date and time
+      const startDate = new Date(selectedDate + 'T' + selectedTime.replace(' ', ''))
+      const endDate = new Date(startDate.getTime() + 60 * 60 * 1000) // 1 hour duration
+      
+      const eventData = {
+        summary: `${formData.reason} - ${formData.name}`,
+        description: `
 Patient: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Reason: ${formData.reason}
-Date: ${selectedDate}
-Time: ${selectedTime}
 
 IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
-      `.trim())
-      const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
-      
-      // Simple Google Calendar URL without specific dates
-      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}`
-      console.log('Google Calendar URL:', googleCalendarUrl)
-      
-      // Open Google Calendar
-      try {
-        window.open(googleCalendarUrl, '_blank')
-      } catch (urlError) {
-        console.error('Error opening Google Calendar:', urlError)
-        // Fallback: just show success message
+        `.trim(),
+        location: '123 Medical Plaza, Suite 200, Healthcare City, HC 12345',
+        start: {
+          dateTime: startDate.toISOString(),
+          timeZone: 'America/New_York'
+        },
+        end: {
+          dateTime: endDate.toISOString(),
+          timeZone: 'America/New_York'
+        },
+        attendees: [
+          { email: formData.email, displayName: formData.name },
+          { email: 'info@eyecareclinic.com', displayName: 'Eye Care Clinic' }
+        ],
+        reminders: {
+          useDefault: false,
+          overrides: [
+            { method: 'email', minutes: 24 * 60 }, // 24 hours before
+            { method: 'popup', minutes: 60 } // 1 hour before
+          ]
+        }
       }
       
+      // Create Google Calendar event using the API
+      await createGoogleCalendarEvent(eventData)
+      
       // Show success message
-      alert(`✅ Appointment Request Submitted!
+      alert(`✅ Appointment Successfully Booked!
 
 📅 Date: ${selectedDate} at ${selectedTime}
 👤 Patient: ${formData.name}
 📧 Email: ${formData.email}
 📞 Phone: ${formData.phone}
 
-📋 Next Steps:
-1. Check your email for confirmation
-2. We'll call you to confirm within 24 hours
-3. You'll receive text reminders 24h and 2h before your appointment
+📅 Calendar Event Created:
+• Added to your Google Calendar
+• Added to clinic's Google Calendar
+• Email reminders set up
+• Popup reminders configured
+
+📧 You'll receive:
+• Email confirmation immediately
+• Email reminder 24 hours before
+• Popup reminder 1 hour before
 
 📞 Questions? Call us at (555) 123-4567`)
       
