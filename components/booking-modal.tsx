@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 import { X, Calendar, Clock, MapPin, Phone, Mail } from 'lucide-react'
-import { sendAppointmentNotification } from '@/lib/email-service'
-import { scheduleAppointmentReminders, createCalendarEvent } from '@/lib/notification-service'
+// import { sendAppointmentNotification } from '@/lib/email-service'
+// import { scheduleAppointmentReminders, createCalendarEvent } from '@/lib/notification-service'
 
 interface BookingModalProps {
   isOpen: boolean
@@ -39,16 +39,7 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
     
     try {
-      // 1. Send confirmation email to both parties
-      await sendAppointmentNotification(appointmentData)
-      
-      // 2. Schedule reminder notifications
-      await scheduleAppointmentReminders(appointmentData)
-      
-      // 3. Create calendar event for both parties
-      await createCalendarEvent(appointmentData)
-      
-      // 4. Also create Google Calendar link as backup
+      // Create Google Calendar link for both parties
       const startDate = new Date(selectedDate + 'T' + selectedTime.replace(' ', ''))
       const endDate = new Date(startDate.getTime() + 60 * 60 * 1000)
       
@@ -74,22 +65,18 @@ IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
       // Open Google Calendar as backup
       window.open(googleCalendarUrl, '_blank')
       
-      // Show comprehensive success message
-      alert(`✅ Appointment Successfully Booked!
+      // Show success message
+      alert(`✅ Appointment Request Submitted!
 
 📅 Date: ${selectedDate} at ${selectedTime}
 👤 Patient: ${formData.name}
 📧 Email: ${formData.email}
 📞 Phone: ${formData.phone}
 
-📧 Email confirmations sent to:
-• ${formData.email} (you)
-• info@eyecareclinic.com (clinic)
-
-📱 You'll receive:
-• Email confirmation immediately
-• Text reminder 24 hours before
-• Text reminder 2 hours before
+📋 Next Steps:
+1. Check your email for confirmation
+2. We'll call you to confirm within 24 hours
+3. You'll receive text reminders 24h and 2h before your appointment
 
 📞 Questions? Call us at (555) 123-4567`)
       
