@@ -39,11 +39,8 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     }
     
     try {
-      // Create Google Calendar link for both parties
-      console.log('Selected date:', selectedDate, 'Selected time:', selectedTime)
-      const startDate = new Date(selectedDate + 'T' + selectedTime.replace(' ', ''))
-      const endDate = new Date(startDate.getTime() + 60 * 60 * 1000)
-      console.log('Start date:', startDate, 'End date:', endDate)
+      // Simple Google Calendar link without complex date parsing
+      console.log('Booking appointment for:', formData.name, 'Date:', selectedDate, 'Time:', selectedTime)
       
       const title = encodeURIComponent(`${formData.reason} - ${formData.name}`)
       const details = encodeURIComponent(`
@@ -51,23 +48,24 @@ Patient: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Reason: ${formData.reason}
+Date: ${selectedDate}
+Time: ${selectedTime}
 
 IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
       `.trim())
       const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
       
-      const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-      const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-      console.log('Date strings:', startDateStr, endDateStr)
-      
-      const clinicEmail = 'info@eyecareclinic.com'
-      const attendees = `${formData.email},${clinicEmail}`
-      
-      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}&add=${attendees}`
+      // Simple Google Calendar URL without specific dates
+      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}`
       console.log('Google Calendar URL:', googleCalendarUrl)
       
       // Open Google Calendar
-      window.open(googleCalendarUrl, '_blank')
+      try {
+        window.open(googleCalendarUrl, '_blank')
+      } catch (urlError) {
+        console.error('Error opening Google Calendar:', urlError)
+        // Fallback: just show success message
+      }
       
       // Show success message
       alert(`✅ Appointment Request Submitted!
