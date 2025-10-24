@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://jobmates.netlify.app/sitemap.xml',
+    sitemap: 'https://krisi-eyes.netlify.app/sitemap.xml',
   }
 }
