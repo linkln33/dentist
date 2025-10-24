@@ -25,11 +25,24 @@ export function FloatingWhatsApp() {
   }
 
   const handleBookingClick = () => {
-    // Scroll to contact section on the same page
-    const contactSection = document.getElementById('contact')
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
-    }
+    // Open Google Calendar to book appointment
+    const startDate = new Date()
+    startDate.setDate(startDate.getDate() + 1) // Tomorrow
+    startDate.setHours(9, 0, 0, 0) // 9 AM
+    
+    const endDate = new Date(startDate)
+    endDate.setHours(10, 0, 0, 0) // 10 AM
+    
+    const title = encodeURIComponent('Eye Exam Appointment - EyeCare Clinic')
+    const details = encodeURIComponent('Please call (555) 123-4567 to confirm your appointment time.')
+    const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
+    
+    const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+    const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
+    
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}`
+    
+    window.open(googleCalendarUrl, '_blank')
     setIsOpen(false) // Close the panel
   }
 
