@@ -13,15 +13,15 @@ export function FloatingWhatsApp() {
     const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`
     console.log('WhatsApp URL:', whatsappUrl) // Debug log
-    window.open(whatsappUrl, '_blank')
+    window.location.href = whatsappUrl
   }
 
   const handlePhoneClick = () => {
-    window.open('tel:+15551234567', '_blank')
+    window.location.href = 'tel:+15551234567'
   }
 
   const handleEmailClick = () => {
-    window.open('mailto:info@eyecareclinic.com', '_blank')
+    window.location.href = 'mailto:info@eyecareclinic.com'
   }
 
   const handleBookingClick = () => {
@@ -40,9 +40,9 @@ export function FloatingWhatsApp() {
     const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
     const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
     
-    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}`
+    const googleCalendarUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eye%20Exam%20Appointment%20-%20EyeCare%20Clinic&dates=20241225T090000Z/20241225T100000Z&details=Please%20call%20(555)%20123-4567%20to%20confirm%20your%20appointment%20time.&location=123%20Medical%20Plaza%2C%20Suite%20200%2C%20Healthcare%20City%2C%20HC%2012345'
     
-    window.open(googleCalendarUrl, '_blank')
+    window.location.href = googleCalendarUrl
     setIsOpen(false) // Close the panel
   }
 

@@ -64,32 +64,15 @@ export default function HomePage() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="healthcare-gradient text-white text-lg px-8 py-4 hover:scale-105 transition-transform"
-                  onClick={() => {
-                    const startDate = new Date()
-                    startDate.setDate(startDate.getDate() + 1) // Tomorrow
-                    startDate.setHours(9, 0, 0, 0) // 9 AM
-                    
-                    const endDate = new Date(startDate)
-                    endDate.setHours(10, 0, 0, 0) // 10 AM
-                    
-                    const title = encodeURIComponent('Eye Exam Appointment - EyeCare Clinic')
-                    const details = encodeURIComponent('Please call (555) 123-4567 to confirm your appointment time.')
-                    const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
-                    
-                    const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-                    const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-                    
-                    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}`
-                    
-                    window.open(googleCalendarUrl, '_blank')
-                  }}
+                <a
+                  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eye%20Exam%20Appointment%20-%20EyeCare%20Clinic&dates=20241225T090000Z/20241225T100000Z&details=Please%20call%20(555)%20123-4567%20to%20confirm%20your%20appointment%20time.&location=123%20Medical%20Plaza%2C%20Suite%20200%2C%20Healthcare%20City%2C%20HC%2012345"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-11 rounded-md healthcare-gradient text-white text-lg px-8 py-4 hover:scale-105 transition-transform"
                 >
                   <Calendar className="h-5 w-5 mr-2" />
                   Book Appointment
-                </Button>
+                </a>
                 <Button 
                   size="lg" 
                   className="text-lg px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50 transition-all duration-300"
@@ -513,40 +496,22 @@ export default function HomePage() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="healthcare-gradient text-white text-lg px-8 py-4"
-                  onClick={() => {
-                    const startDate = new Date()
-                    startDate.setDate(startDate.getDate() + 1) // Tomorrow
-                    startDate.setHours(9, 0, 0, 0) // 9 AM
-                    
-                    const endDate = new Date(startDate)
-                    endDate.setHours(10, 0, 0, 0) // 10 AM
-                    
-                    const title = encodeURIComponent('Eye Exam Appointment - EyeCare Clinic')
-                    const details = encodeURIComponent('Please call (555) 123-4567 to confirm your appointment time.')
-                    const location = encodeURIComponent('123 Medical Plaza, Suite 200, Healthcare City, HC 12345')
-                    
-                    const startDateStr = startDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-                    const endDateStr = endDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-                    
-                    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startDateStr}/${endDateStr}&details=${details}&location=${location}`
-                    
-                    window.open(googleCalendarUrl, '_blank')
-                  }}
+                <a
+                  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Eye%20Exam%20Appointment%20-%20EyeCare%20Clinic&dates=20241225T090000Z/20241225T100000Z&details=Please%20call%20(555)%20123-4567%20to%20confirm%20your%20appointment%20time.&location=123%20Medical%20Plaza%2C%20Suite%20200%2C%20Healthcare%20City%2C%20HC%2012345"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary hover:bg-primary/90 h-11 rounded-md healthcare-gradient text-white text-lg px-8 py-4"
                 >
                   <Calendar className="h-5 w-5 mr-2" />
                   Book Appointment
-                </Button>
-                <Button 
-                  size="lg" 
-                  className="text-lg px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50"
-                  onClick={() => window.open('tel:+15551234567', '_blank')}
+                </a>
+                <a
+                  href="tel:+15551234567"
+                  className="inline-flex items-center justify-center whitespace-nowrap font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-11 rounded-md text-lg px-8 py-4 bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 hover:border-white/50"
                 >
                   <Phone className="h-5 w-5 mr-2" />
                   Call Now
-                </Button>
+                </a>
               </div>
             </div>
             
