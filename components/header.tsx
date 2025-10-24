@@ -11,6 +11,14 @@ export function Header() {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+      setIsMenuOpen(false) // Close mobile menu after clicking
+    }
+  }
+
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
       {/* Top bar with contact info */}
@@ -40,26 +48,42 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <Link href="/" className="text-gray-700 hover:text-primary transition-colors">
+            <button 
+              onClick={() => scrollToSection('home')} 
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
               Home
-            </Link>
-            <Link href="/services" className="text-gray-700 hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('services')} 
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
               Services
-            </Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('about')} 
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
               About
-            </Link>
-            <Link href="/testimonials" className="text-gray-700 hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('testimonials')} 
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
               Testimonials
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
               Contact
-            </Link>
-            <Link href="/contact">
-              <Button className="healthcare-gradient text-white">
-                Book Appointment
-              </Button>
-            </Link>
+            </button>
+            <Button 
+              onClick={() => scrollToSection('contact')}
+              className="healthcare-gradient text-white"
+            >
+              Book Appointment
+            </Button>
           </div>
 
           {/* Mobile menu button */}
@@ -76,46 +100,42 @@ export function Header() {
         {isMenuOpen && (
           <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
             <div className="flex flex-col space-y-4 pt-4">
-              <Link 
-                href="/" 
-                className="text-gray-700 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => scrollToSection('home')} 
+                className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Home
-              </Link>
-              <Link 
-                href="/services" 
-                className="text-gray-700 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('services')} 
+                className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Services
-              </Link>
-              <Link 
-                href="/about" 
-                className="text-gray-700 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('about')} 
+                className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 About
-              </Link>
-              <Link 
-                href="/testimonials" 
-                className="text-gray-700 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('testimonials')} 
+                className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Testimonials
-              </Link>
-              <Link 
-                href="/contact" 
-                className="text-gray-700 hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Contact
-              </Link>
-              <Link href="/contact">
-                <Button className="healthcare-gradient text-white w-full">
-                  Book Appointment
-                </Button>
-              </Link>
+              </button>
+              <Button 
+                onClick={() => scrollToSection('contact')}
+                className="healthcare-gradient text-white w-full"
+              >
+                Book Appointment
+              </Button>
             </div>
           </div>
         )}
