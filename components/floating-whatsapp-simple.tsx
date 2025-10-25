@@ -36,29 +36,60 @@ export function FloatingWhatsAppSimple() {
   return (
     <div 
       style={{
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        zIndex: 99999,
-        pointerEvents: 'auto',
-        backgroundColor: 'red', // Temporary to make it very visible
-        width: '100px',
-        height: '100px'
+        position: 'fixed !important',
+        bottom: '20px !important',
+        right: '20px !important',
+        zIndex: '99999 !important',
+        pointerEvents: 'auto !important',
+        backgroundColor: 'red !important',
+        width: '100px !important',
+        height: '100px !important',
+        border: '5px solid blue !important',
+        display: 'block !important',
+        visibility: 'visible !important'
       }}
     >
       <div style={{ position: 'relative' }}>
         {/* DEBUG: Component is rendering */}
         <div style={{ 
           position: 'absolute', 
-          top: '-30px', 
+          top: '-50px', 
           left: '0', 
-          backgroundColor: 'yellow', 
-          color: 'black', 
-          padding: '5px',
-          fontSize: '12px',
-          zIndex: 100000
+          backgroundColor: 'yellow !important', 
+          color: 'black !important', 
+          padding: '10px !important',
+          fontSize: '16px !important',
+          zIndex: '100000 !important',
+          border: '3px solid black !important',
+          fontWeight: 'bold !important'
         }}>
-          WhatsApp Button Rendered!
+          🔥 WHATSAPP BUTTON IS HERE! 🔥
+        </div>
+        
+        {/* Another debug element */}
+        <div 
+          onClick={() => {
+            console.log('🔥 DEBUG ELEMENT CLICKED! 🔥')
+            alert('DEBUG: Click is working!')
+          }}
+          style={{
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'lime !important',
+            color: 'black !important',
+            display: 'flex !important',
+            alignItems: 'center !important',
+            justifyContent: 'center !important',
+            fontSize: '12px !important',
+            fontWeight: 'bold !important',
+            zIndex: '100001 !important',
+            cursor: 'pointer !important'
+          }}
+        >
+          CLICK ME!
         </div>
         
         {/* Chat Options Panel */}
