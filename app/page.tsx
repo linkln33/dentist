@@ -24,6 +24,8 @@ import {
 } from "lucide-react"
 import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 import { BookingModal } from "@/components/booking-modal"
+import { TestimonialsCarousel } from "@/components/testimonials-carousel"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
 export default function HomePage() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
@@ -379,71 +381,96 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">
-                "Dr. Smith performed my LASIK surgery and the results exceeded my expectations. 
-                I can see clearly without glasses for the first time in 20 years!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-semibold text-gray-900">Sarah Johnson</p>
-                  <p className="text-sm text-gray-600">LASIK Patient</p>
-                </div>
-              </div>
-            </Card>
+          <div className="max-w-6xl mx-auto">
+            <TestimonialsCarousel />
+          </div>
+        </div>
+      </section>
 
-            <Card className="p-6">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">
-                "The staff is incredibly professional and caring. They made my cataract surgery 
-                comfortable and stress-free. Highly recommend!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-semibold text-gray-900">Michael Chen</p>
-                  <p className="text-sm text-gray-600">Cataract Patient</p>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="p-6">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-4">
-                "My daughter was nervous about her first eye exam, but the pediatric team 
-                made it fun and easy. Thank you for your patience and expertise!"
-              </p>
-              <div className="flex items-center">
-                <div className="w-10 h-10 bg-gray-300 rounded-full mr-3"></div>
-                <div>
-                  <p className="font-semibold text-gray-900">Lisa Rodriguez</p>
-                  <p className="text-sm text-gray-600">Parent</p>
-                </div>
-              </div>
-            </Card>
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+              <MessageCircle className="h-4 w-4 mr-2" />
+              Frequently Asked Questions
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Common Questions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Find answers to the most frequently asked questions about our eye care services and procedures.
+            </p>
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/testimonials">
-              <Button variant="outline" size="lg">
-                Read More Testimonials
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="exam-frequency" className="bg-gray-50 rounded-lg border border-gray-200">
+                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                  <span className="font-semibold text-gray-900">How often should I have an eye exam?</span>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    Adults should have a comprehensive eye exam every 1-2 years, or more frequently if you have existing eye conditions, diabetes, or a family history of eye disease. Children should have their first eye exam at 6 months, then at 3 years, and before starting school.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="lasik-candidate" className="bg-gray-50 rounded-lg border border-gray-200">
+                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                  <span className="font-semibold text-gray-900">Am I a good candidate for LASIK?</span>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    Good LASIK candidates are typically over 18, have stable vision for at least one year, have healthy eyes, and have realistic expectations. We perform a thorough evaluation to determine if LASIK is right for you.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="cataract-timing" className="bg-gray-50 rounded-lg border border-gray-200">
+                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                  <span className="font-semibold text-gray-900">When should I consider cataract surgery?</span>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    Cataract surgery is typically recommended when cataracts significantly affect your daily activities, such as driving, reading, or watching TV. We'll help you determine the right timing based on your symptoms and lifestyle needs.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="pediatric-exam" className="bg-gray-50 rounded-lg border border-gray-200">
+                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                  <span className="font-semibold text-gray-900">At what age should children have their first eye exam?</span>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    The American Academy of Ophthalmology recommends that children have their first comprehensive eye exam at 6 months of age, then at 3 years, and before starting school. Earlier screening may be needed if there are concerns about vision development.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="insurance-accepted" className="bg-gray-50 rounded-lg border border-gray-200">
+                <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
+                  <span className="font-semibold text-gray-900">What insurance plans do you accept?</span>
+                </AccordionTrigger>
+                <AccordionContent className="px-6 pb-4">
+                  <p className="text-gray-600 leading-relaxed">
+                    We accept most major insurance plans including Medicare, Medicaid, and private insurance. Our staff will verify your coverage and explain any out-of-pocket costs before your visit.
+                  </p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
+            <div className="text-center mt-12">
+              <Button 
+                size="lg" 
+                className="healthcare-gradient text-white"
+                onClick={() => scrollToSection('contact')}
+              >
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Ask a Question
               </Button>
-            </Link>
+            </div>
           </div>
         </div>
       </section>

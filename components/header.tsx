@@ -12,10 +12,23 @@ export function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const scrollToSection = (sectionId: string) => {
+    console.log('Scrolling to section:', sectionId) // Debug log
     const element = document.getElementById(sectionId)
+    console.log('Element found:', element) // Debug log
+    
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const headerHeight = 120 // Approximate height of sticky header
+      const elementPosition = element.offsetTop - headerHeight
+      
+      console.log('Scrolling to position:', elementPosition) // Debug log
+      
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      })
       setIsMenuOpen(false) // Close mobile menu after clicking
+    } else {
+      console.log('Element not found for ID:', sectionId) // Debug log
     }
   }
 
@@ -76,6 +89,12 @@ export function Header() {
               Testimonials
             </button>
             <button 
+              onClick={() => scrollToSection('faq')} 
+              className="text-gray-700 hover:text-primary transition-colors"
+            >
+              FAQ
+            </button>
+            <button 
               onClick={() => scrollToSection('contact')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
@@ -130,6 +149,12 @@ export function Header() {
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Testimonials
+              </button>
+              <button 
+                onClick={() => scrollToSection('faq')} 
+                className="text-gray-700 hover:text-primary transition-colors text-left"
+              >
+                FAQ
               </button>
               <button 
                 onClick={() => scrollToSection('contact')} 
