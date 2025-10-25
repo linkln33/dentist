@@ -22,9 +22,16 @@ export function FloatingWhatsAppTest() {
   }
 
   const handleBookingClick = () => {
-    const contactSection = document.getElementById('contact')
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
+    // Open booking modal by triggering the booking modal component
+    const bookingButton = document.querySelector('[data-booking-trigger]') as HTMLButtonElement
+    if (bookingButton) {
+      bookingButton.click()
+    } else {
+      // Fallback: scroll to contact section
+      const contactSection = document.getElementById('contact')
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' })
+      }
     }
     setIsOpen(false)
   }

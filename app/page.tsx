@@ -71,10 +71,11 @@ export default function HomePage() {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
+                <Button 
                   size="lg"
                   className="healthcare-gradient text-white text-lg px-8 py-4 hover:scale-105 transition-transform"
                   onClick={() => setIsBookingModalOpen(true)}
+                  data-booking-trigger
                 >
                   <Calendar className="h-5 w-5 mr-2" />
                   Book Appointment
@@ -531,6 +532,7 @@ export default function HomePage() {
                   size="lg"
                   className="healthcare-gradient text-white text-lg px-8 py-4"
                   onClick={() => setIsBookingModalOpen(true)}
+                  data-booking-trigger
                 >
                   <Calendar className="h-5 w-5 mr-2" />
                   Book Appointment

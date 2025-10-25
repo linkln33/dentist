@@ -158,6 +158,7 @@ export default function ServicesPage() {
                 size="lg" 
                 className="healthcare-gradient text-white text-lg px-8 py-4"
                 onClick={handleBookAppointment}
+                data-booking-trigger
               >
                 <Calendar className="h-5 w-5 mr-2" />
                 Book Appointment
