@@ -1,5 +1,15 @@
 {
+  "/_not-found": "app/_not-found.js",
+  "/contact/page": "app/contact/page.js",
   "/page": "app/page.js",
-  "/icon/[[...__metadata_id__]]/route": "app/icon/[[...__metadata_id__]]/route.js",
+  "/api/calendar/create/route": "app/api/calendar/create/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/faq/page": "app/faq/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/icon/route": "app/icon/route.js",
+  "/blog/page": "app/blog/page.js",
+  "/opengraph-image/route": "app/opengraph-image/route.js",
+  "/about/page": "app/about/page.js",
+  "/testimonials/page": "app/testimonials/page.js",
   "/services/page": "app/services/page.js"
 }

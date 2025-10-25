@@ -158,7 +158,6 @@ export const logPerformance = (metric: string, value: number) => {
 export const logReactError = (error: Error, errorInfo: React.ErrorInfo) => {
   errorLogger.logError(error, 'React Error Boundary', {
     componentStack: errorInfo.componentStack,
-    errorBoundary: errorInfo.errorBoundary,
   })
 }
 
