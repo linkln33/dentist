@@ -4,7 +4,7 @@ import './globals.css'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { FloatingWhatsApp } from '@/components/floating-whatsapp'
-import { FloatingWhatsAppTest } from '@/components/floating-whatsapp-test'
+import { FloatingWhatsAppSimple } from '@/components/floating-whatsapp-simple'
 import ErrorBoundary from '@/components/error-boundary'
 import { StructuredData } from '@/lib/structured-data'
 
@@ -100,7 +100,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer />
-                <FloatingWhatsAppTest />
+                <FloatingWhatsAppSimple />
               </ErrorBoundary>
             </body>
     </html>
