@@ -1,3 +1,4 @@
 {
+  "/api/calendar/create/route": "app/api/calendar/create/route.js",
   "/page": "app/page.js"
 }

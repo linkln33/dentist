@@ -32,19 +32,53 @@ export async function POST(request: NextRequest) {
     const calendar = google.calendar({ version: 'v3', auth })
     
     // Convert our event data to Google Calendar format
+    console.log('Processing event data:', eventData)
+    
+    // Parse date and time properly
+    const dateStr = eventData.date // Format: YYYY-MM-DD
+    const timeStr = eventData.time // Format: HH:MM AM/PM
+    
+    console.log('Raw time string:', timeStr)
+    
+    // Convert 12-hour format to 24-hour format
+    let time24 = timeStr
+    if (timeStr.includes('AM') || timeStr.includes('PM')) {
+      const parts = timeStr.split(' ')
+      const time = parts[0]
+      const period = parts[1]
+      const [hours, minutes] = time.split(':')
+      let hour24 = parseInt(hours)
+      
+      if (period === 'PM' && hour24 !== 12) {
+        hour24 += 12
+      } else if (period === 'AM' && hour24 === 12) {
+        hour24 = 0
+      }
+      
+      time24 = `${hour24.toString().padStart(2, '0')}:${minutes}`
+    }
+    
+    console.log('Converted time:', time24)
+    
+    const startDateTime = new Date(`${dateStr}T${time24}:00`)
+    const endDateTime = new Date(startDateTime.getTime() + 60 * 60 * 1000) // 1 hour later
+    
+    console.log('Parsed dates:', { startDateTime, endDateTime })
+    
     const googleEvent = {
       summary: eventData.summary,
       description: eventData.description,
       location: eventData.location,
       start: {
-        dateTime: new Date(eventData.date + 'T' + eventData.time.replace(' ', '')).toISOString(),
+        dateTime: startDateTime.toISOString(),
         timeZone: 'America/New_York'
       },
       end: {
-        dateTime: new Date(new Date(eventData.date + 'T' + eventData.time.replace(' ', '')).getTime() + 60 * 60 * 1000).toISOString(),
+        dateTime: endDateTime.toISOString(),
         timeZone: 'America/New_York'
       },
-      attendees: eventData.attendees,
+      // Note: Service accounts can't send invitations without domain-wide delegation
+      // The event will be created in the clinic's calendar
       reminders: {
         useDefault: false,
         overrides: [
@@ -55,9 +89,8 @@ export async function POST(request: NextRequest) {
     }
     
     const event = await calendar.events.insert({
-      calendarId: 'primary', // Use your shared calendar ID here
-      resource: googleEvent,
-      sendUpdates: 'all' // Sends emails to attendees
+      calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
+      resource: googleEvent
     })
     
     console.log('✅ Calendar event created successfully:', event.data.id)
