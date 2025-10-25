@@ -113,7 +113,7 @@ export function FloatingWhatsApp() {
               e.stopPropagation()
               setIsOpen(!isOpen)
             }}
-            className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer border-2 border-white"
+            className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer border-2 border-white"
             aria-label="Open contact options"
             type="button"
             style={{ zIndex: 10000, pointerEvents: 'auto' }}
@@ -127,7 +127,7 @@ export function FloatingWhatsApp() {
 
           {/* Pulse animation for closed state */}
           {!isOpen && (
-            <div className="absolute inset-0 rounded-full bg-green-600 animate-ping opacity-20"></div>
+            <div className="absolute inset-0 rounded-full bg-blue-600 animate-ping opacity-20"></div>
           )}
         </div>
       </div>
