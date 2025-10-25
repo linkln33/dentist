@@ -1,6 +1,15 @@
 {
-  "name": "dentist-website",
-  "version": "0.1.0",
+  "name": "smilecare-dental-website",
+  "version": "1.0.0",
+  "description": "Professional dental practice website with modern design, comprehensive services, and patient-focused features. Built with Next.js 14, TypeScript, and Tailwind CSS.",
+  "keywords": ["dental", "dentist", "healthcare", "nextjs", "typescript", "tailwind", "medical", "practice", "appointment", "teeth", "oral-health"],
+  "author": "Dr. Michael Chen - SmileCare Dental",
+  "license": "MIT",
+  "homepage": "https://smilecaredental.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linkln33/dentist.git"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
