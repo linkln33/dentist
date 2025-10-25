@@ -1,12 +1,18 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { MessageCircle, X, Phone, Mail, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function FloatingWhatsApp() {
   console.log('FloatingWhatsApp component rendered')
   const [isOpen, setIsOpen] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    console.log('FloatingWhatsApp useEffect - setting isClient to true')
+    setIsClient(true)
+  }, [])
 
   const whatsappMessage = "Hi, I'd like to schedule a dental appointment. Could you please provide available times?"
 
@@ -37,6 +43,11 @@ export function FloatingWhatsApp() {
       }
     }
     setIsOpen(false) // Close the panel
+  }
+
+  if (!isClient) {
+    console.log('FloatingWhatsApp not rendering - not on client side')
+    return null
   }
 
   return (
