@@ -5,6 +5,7 @@ import { MessageCircle, X, Phone, Mail, Calendar } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function FloatingWhatsApp() {
+  console.log('FloatingWhatsApp component rendered')
   const [isOpen, setIsOpen] = useState(false)
 
   const whatsappMessage = "Hi, I'd like to schedule a dental appointment. Could you please provide available times?"
@@ -109,11 +110,13 @@ export function FloatingWhatsApp() {
           {/* Main Floating Button */}
           <button
             onClick={(e) => {
+              console.log('WhatsApp button clicked!')
               e.preventDefault()
               e.stopPropagation()
               setIsOpen(!isOpen)
             }}
             onMouseDown={(e) => {
+              console.log('WhatsApp button mouse down!')
               e.preventDefault()
               e.stopPropagation()
             }}
