@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button"
 
 export function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
-  
-  console.log('FloatingWhatsApp component rendered, isOpen:', isOpen)
 
   const whatsappMessage = "Hi, I'd like to schedule an eye exam appointment. Could you please provide available times?"
 
@@ -36,43 +34,12 @@ export function FloatingWhatsApp() {
 
   return (
     <>
-      {/* DEBUG: Make button very visible */}
-      <div 
-        style={{ 
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          zIndex: 99999,
-          pointerEvents: 'auto',
-          backgroundColor: 'red',
-          width: '100px',
-          height: '100px',
-          border: '5px solid blue'
-        }}
-      >
-        <div style={{ 
-          position: 'absolute', 
-          top: '-30px', 
-          left: '0', 
-          backgroundColor: 'yellow', 
-          color: 'black', 
-          padding: '5px',
-          fontSize: '12px',
-          fontWeight: 'bold'
-        }}>
-          WHATSAPP DEBUG
-        </div>
-      </div>
-      
       {/* Floating Button */}
       <div 
         className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50" 
         style={{ 
           zIndex: 9999, 
-          pointerEvents: 'auto',
-          position: 'fixed',
-          bottom: '16px',
-          right: '16px'
+          pointerEvents: 'auto'
         }}
       >
         <div className="relative">
@@ -138,7 +105,6 @@ export function FloatingWhatsApp() {
             onClick={(e) => {
               e.preventDefault()
               e.stopPropagation()
-              console.log('WhatsApp button clicked, current state:', isOpen)
               setIsOpen(!isOpen)
             }}
             className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer border-2 border-white"
