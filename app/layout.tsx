@@ -100,7 +100,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer />
-                <FloatingWhatsAppSimple />
+                <FloatingWhatsApp />
               </ErrorBoundary>
             </body>
     </html>

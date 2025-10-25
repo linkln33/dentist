@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button"
 
 export function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
-  
-  console.log('FloatingWhatsApp component rendered')
 
   const whatsappMessage = "Hi, I'd like to schedule an eye exam appointment. Could you please provide available times?"
 
@@ -107,8 +105,9 @@ export function FloatingWhatsApp() {
 
           {/* Main Floating Button */}
           <button
-            onClick={() => {
-              console.log('WhatsApp button clicked, current state:', isOpen)
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
               setIsOpen(!isOpen)
             }}
             className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer border-2 border-white"

@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button"
 
 export function FloatingWhatsAppSimple() {
   const [isOpen, setIsOpen] = useState(false)
-  
-  console.log('FloatingWhatsAppSimple component rendered, isOpen:', isOpen)
 
   const whatsappMessage = "Hi, I'd like to schedule an eye exam appointment. Could you please provide available times?"
 
@@ -35,79 +33,15 @@ export function FloatingWhatsAppSimple() {
 
   return (
     <div 
-      onClick={(e) => {
-        console.log('Container clicked')
-        e.stopPropagation()
-      }}
-      onMouseDown={(e) => {
-        console.log('Container mouse down')
-        e.stopPropagation()
-      }}
       style={{
-        position: 'fixed !important',
-        bottom: '20px !important',
-        right: '20px !important',
-        zIndex: '99999 !important',
-        pointerEvents: 'auto !important',
-        backgroundColor: 'red !important',
-        width: '100px !important',
-        height: '100px !important',
-        border: '5px solid blue !important',
-        display: 'block !important',
-        visibility: 'visible !important'
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 9999,
+        pointerEvents: 'auto'
       }}
     >
       <div style={{ position: 'relative' }}>
-        {/* DEBUG: Component is rendering */}
-        <div style={{ 
-          position: 'absolute', 
-          top: '-50px', 
-          left: '0', 
-          backgroundColor: 'yellow !important', 
-          color: 'black !important', 
-          padding: '10px !important',
-          fontSize: '16px !important',
-          zIndex: '100000 !important',
-          border: '3px solid black !important',
-          fontWeight: 'bold !important'
-        }}>
-          🔥 WHATSAPP BUTTON IS HERE! 🔥
-        </div>
-        
-        {/* Another debug element */}
-        <button 
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            console.log('🔥 DEBUG ELEMENT CLICKED! 🔥')
-            alert('DEBUG: Click is working!')
-            setIsOpen(!isOpen)
-          }}
-          onMouseDown={(e) => {
-            e.preventDefault()
-            console.log('Mouse down on debug element')
-          }}
-          style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'lime !important',
-            color: 'black !important',
-            display: 'flex !important',
-            alignItems: 'center !important',
-            justifyContent: 'center !important',
-            fontSize: '12px !important',
-            fontWeight: 'bold !important',
-            zIndex: '100001 !important',
-            cursor: 'pointer !important',
-            border: 'none !important',
-            outline: 'none !important'
-          }}
-        >
-          CLICK ME!
-        </button>
         
         {/* Chat Options Panel */}
         {isOpen && (
@@ -235,12 +169,7 @@ export function FloatingWhatsAppSimple() {
           onClick={(e) => {
             e.preventDefault()
             e.stopPropagation()
-            console.log('WhatsApp button clicked, current state:', isOpen)
             setIsOpen(!isOpen)
-          }}
-          onMouseDown={(e) => {
-            e.preventDefault()
-            console.log('Mouse down on WhatsApp button')
           }}
           style={{
             width: '56px',
@@ -256,7 +185,7 @@ export function FloatingWhatsAppSimple() {
             boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             transition: 'all 0.3s ease',
             position: 'relative',
-            zIndex: '100002'
+            zIndex: 100002
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = '#15803d'
