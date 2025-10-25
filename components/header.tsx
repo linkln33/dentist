@@ -1,28 +1,57 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Logo } from "@/components/logo"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    
-    if (element) {
-      const headerHeight = 120 // Approximate height of sticky header
-      const elementPosition = element.offsetTop - headerHeight
+  // Handle hash navigation when page loads
+  useEffect(() => {
+    if (pathname === '/' && window.location.hash) {
+      const hash = window.location.hash.substring(1) // Remove the # symbol
+      const element = document.getElementById(hash)
       
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      })
-      setIsMenuOpen(false) // Close mobile menu after clicking
+      if (element) {
+        // Small delay to ensure page is fully loaded
+        setTimeout(() => {
+          const headerHeight = 120
+          const elementPosition = element.offsetTop - headerHeight
+          
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          })
+        }, 100)
+      }
+    }
+  }, [pathname])
+
+  const handleNavigation = (sectionId: string) => {
+    // If we're on the homepage, scroll to section
+    if (pathname === '/') {
+      const element = document.getElementById(sectionId)
+      
+      if (element) {
+        const headerHeight = 120 // Approximate height of sticky header
+        const elementPosition = element.offsetTop - headerHeight
+        
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        })
+        setIsMenuOpen(false) // Close mobile menu after clicking
+      }
+    } else {
+      // If we're on another page, navigate to homepage with hash
+      window.location.href = `/#${sectionId}`
     }
   }
 
@@ -59,43 +88,43 @@ export function Header() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             <button 
-              onClick={() => scrollToSection('home')} 
+              onClick={() => handleNavigation('home')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
               Home
             </button>
             <button 
-              onClick={() => scrollToSection('services')} 
+              onClick={() => handleNavigation('services')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
               Services
             </button>
             <button 
-              onClick={() => scrollToSection('about')} 
+              onClick={() => handleNavigation('about')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
               About
             </button>
             <button 
-              onClick={() => scrollToSection('testimonials')} 
+              onClick={() => handleNavigation('testimonials')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
               Testimonials
             </button>
             <button 
-              onClick={() => scrollToSection('faq')} 
+              onClick={() => handleNavigation('faq')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
               FAQ
             </button>
             <button 
-              onClick={() => scrollToSection('contact')} 
+              onClick={() => handleNavigation('contact')} 
               className="text-gray-700 hover:text-primary transition-colors"
             >
               Contact
             </button>
             <Button 
-              onClick={() => scrollToSection('contact')}
+              onClick={() => handleNavigation('contact')}
               className="healthcare-gradient text-white"
             >
               Book Appointment
@@ -121,43 +150,43 @@ export function Header() {
             </div>
             <div className="flex flex-col space-y-4 pt-4">
               <button 
-                onClick={() => scrollToSection('home')} 
+                onClick={() => handleNavigation('home')} 
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Home
               </button>
               <button 
-                onClick={() => scrollToSection('services')} 
+                onClick={() => handleNavigation('services')} 
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Services
               </button>
               <button 
-                onClick={() => scrollToSection('about')} 
+                onClick={() => handleNavigation('about')} 
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 About
               </button>
               <button 
-                onClick={() => scrollToSection('testimonials')} 
+                onClick={() => handleNavigation('testimonials')} 
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Testimonials
               </button>
               <button 
-                onClick={() => scrollToSection('faq')} 
+                onClick={() => handleNavigation('faq')} 
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 FAQ
               </button>
               <button 
-                onClick={() => scrollToSection('contact')} 
+                onClick={() => handleNavigation('contact')} 
                 className="text-gray-700 hover:text-primary transition-colors text-left"
               >
                 Contact
               </button>
               <Button 
-                onClick={() => scrollToSection('contact')}
+                onClick={() => handleNavigation('contact')}
                 className="healthcare-gradient text-white w-full"
               >
                 Book Appointment
