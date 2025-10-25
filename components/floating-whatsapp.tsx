@@ -111,6 +111,7 @@ export function FloatingWhatsApp() {
           <button
             onClick={(e) => {
               console.log('WhatsApp button clicked!')
+              alert('WhatsApp button clicked!')
               e.preventDefault()
               e.stopPropagation()
               setIsOpen(!isOpen)
