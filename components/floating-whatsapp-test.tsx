@@ -7,7 +7,7 @@ export function FloatingWhatsAppTest() {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleWhatsAppClick = () => {
-    const message = "Hi, I'd like to schedule an eye exam appointment. Could you please provide available times?"
+    const message = "Hi, I'd like to schedule a dental appointment. Could you please provide available times?"
     const encodedMessage = encodeURIComponent(message)
     const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`
     window.open(whatsappUrl, '_blank')
@@ -18,7 +18,7 @@ export function FloatingWhatsAppTest() {
   }
 
   const handleEmailClick = () => {
-    window.open('mailto:info@eyecareclinic.com', '_self')
+    window.open('mailto:info@smilecaredental.com', '_self')
   }
 
   const handleBookingClick = () => {
@@ -147,7 +147,7 @@ export function FloatingWhatsAppTest() {
               onClick={handleBookingClick}
               style={{
                 width: '100%',
-                background: 'linear-gradient(135deg, #10b981, #3b82f6)',
+                background: 'linear-gradient(135deg, #1e40af, #3b82f6)',
                 color: 'white',
                 border: 'none',
                 borderRadius: '6px',
@@ -197,7 +197,7 @@ export function FloatingWhatsAppTest() {
         style={{
           width: '56px',
           height: '56px',
-          backgroundColor: '#16a34a',
+          backgroundColor: '#2563eb',
           color: 'white',
           border: '2px solid white',
           borderRadius: '50%',
@@ -211,11 +211,11 @@ export function FloatingWhatsAppTest() {
           zIndex: 100000
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = '#15803d'
+          e.currentTarget.style.backgroundColor = '#1d4ed8'
           e.currentTarget.style.transform = 'scale(1.05)'
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = '#16a34a'
+          e.currentTarget.style.backgroundColor = '#2563eb'
           e.currentTarget.style.transform = 'scale(1)'
         }}
       >
@@ -232,7 +232,7 @@ export function FloatingWhatsAppTest() {
             right: '0',
             bottom: '0',
             borderRadius: '50%',
-            backgroundColor: '#16a34a',
+            backgroundColor: '#2563eb',
             opacity: '0.2',
             animation: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
           }}

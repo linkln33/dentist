@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { FloatingWhatsApp } from '@/components/floating-whatsapp'
+import { FloatingWhatsAppTest } from '@/components/floating-whatsapp-test'
 import ErrorBoundary from '@/components/error-boundary'
 import { StructuredData } from '@/lib/structured-data'
 
@@ -99,7 +99,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer />
-                <FloatingWhatsApp />
+                <FloatingWhatsAppTest />
               </ErrorBoundary>
             </body>
     </html>
