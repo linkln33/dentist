@@ -1,7 +1,11 @@
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { BookingModal } from "@/components/booking-modal"
 import { 
   Eye, 
   Shield, 
@@ -126,8 +130,23 @@ const services = [
 ]
 
 export default function ServicesPage() {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false)
+
+  const handleBookAppointment = () => {
+    setIsBookingModalOpen(true)
+  }
+
+  const handleCallNow = () => {
+    window.location.href = 'tel:+15551234567'
+  }
+
   return (
     <div className="min-h-screen">
+      {/* Booking Modal */}
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-blue-50 py-20">
         <div className="container mx-auto px-4">
@@ -140,11 +159,20 @@ export default function ServicesPage() {
               for patients of all ages using the latest technology and techniques.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="healthcare-gradient text-white text-lg px-8 py-4">
+              <Button 
+                size="lg" 
+                className="healthcare-gradient text-white text-lg px-8 py-4"
+                onClick={handleBookAppointment}
+              >
                 <Calendar className="h-5 w-5 mr-2" />
                 Book Appointment
               </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-4">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8 py-4"
+                onClick={handleCallNow}
+              >
                 <Phone className="h-5 w-5 mr-2" />
                 Call (555) 123-4567
               </Button>
@@ -208,7 +236,11 @@ export default function ServicesPage() {
                         Learn More
                         <ArrowRight className="h-4 w-4 ml-2" />
                       </Button>
-                      <Button variant="outline" className="flex-1">
+                      <Button 
+                        variant="outline" 
+                        className="flex-1"
+                        onClick={handleBookAppointment}
+                      >
                         Book Now
                       </Button>
                     </div>
@@ -278,11 +310,21 @@ export default function ServicesPage() {
             the difference of expert eye care.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="text-lg px-8 py-4"
+              onClick={handleBookAppointment}
+            >
               <Calendar className="h-5 w-5 mr-2" />
               Book Online
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-primary"
+              onClick={handleCallNow}
+            >
               <Phone className="h-5 w-5 mr-2" />
               Call (555) 123-4567
             </Button>
