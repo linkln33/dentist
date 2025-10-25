@@ -125,7 +125,7 @@ export function Header() {
             </button>
             <Button 
               onClick={() => handleNavigation('contact')}
-              className="healthcare-gradient text-white"
+              className="dental-gradient text-white"
             >
               Book Appointment
             </Button>
@@ -187,7 +187,7 @@ export function Header() {
               </button>
               <Button 
                 onClick={() => handleNavigation('contact')}
-                className="healthcare-gradient text-white w-full"
+                className="dental-gradient text-white w-full"
               >
                 Book Appointment
               </Button>
