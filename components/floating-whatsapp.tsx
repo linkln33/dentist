@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 
 export function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
+  
+  console.log('FloatingWhatsApp component rendered')
 
   const whatsappMessage = "Hi, I'd like to schedule an eye exam appointment. Could you please provide available times?"
 
@@ -35,7 +37,16 @@ export function FloatingWhatsApp() {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50" style={{ zIndex: 9999, pointerEvents: 'auto' }}>
+      <div 
+        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50" 
+        style={{ 
+          zIndex: 9999, 
+          pointerEvents: 'auto',
+          position: 'fixed',
+          bottom: '16px',
+          right: '16px'
+        }}
+      >
         <div className="relative">
           {/* Chat Options Panel */}
           {isOpen && (
@@ -96,10 +107,14 @@ export function FloatingWhatsApp() {
 
           {/* Main Floating Button */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer"
+            onClick={() => {
+              console.log('WhatsApp button clicked, current state:', isOpen)
+              setIsOpen(!isOpen)
+            }}
+            className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer border-2 border-white"
             aria-label="Open contact options"
             type="button"
+            style={{ zIndex: 10000, pointerEvents: 'auto' }}
           >
             {isOpen ? (
               <X className="h-5 w-5 md:h-6 md:w-6" />
