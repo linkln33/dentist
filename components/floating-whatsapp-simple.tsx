@@ -40,10 +40,27 @@ export function FloatingWhatsAppSimple() {
         bottom: '20px',
         right: '20px',
         zIndex: 99999,
-        pointerEvents: 'auto'
+        pointerEvents: 'auto',
+        backgroundColor: 'red', // Temporary to make it very visible
+        width: '100px',
+        height: '100px'
       }}
     >
       <div style={{ position: 'relative' }}>
+        {/* DEBUG: Component is rendering */}
+        <div style={{ 
+          position: 'absolute', 
+          top: '-30px', 
+          left: '0', 
+          backgroundColor: 'yellow', 
+          color: 'black', 
+          padding: '5px',
+          fontSize: '12px',
+          zIndex: 100000
+        }}>
+          WhatsApp Button Rendered!
+        </div>
+        
         {/* Chat Options Panel */}
         {isOpen && (
           <div 
