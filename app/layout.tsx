@@ -5,6 +5,7 @@ import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
 import { FloatingWhatsApp } from '@/components/floating-whatsapp'
 import ErrorBoundary from '@/components/error-boundary'
+import { StructuredData } from '@/lib/structured-data'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -90,16 +91,17 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className={inter.className}>
-        <ErrorBoundary>
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          <FloatingWhatsApp />
-        </ErrorBoundary>
-      </body>
+            <body className={inter.className}>
+              <StructuredData />
+              <ErrorBoundary>
+                <Header />
+                <main className="min-h-screen">
+                  {children}
+                </main>
+                <Footer />
+                <FloatingWhatsApp />
+              </ErrorBoundary>
+            </body>
     </html>
   )
 }
