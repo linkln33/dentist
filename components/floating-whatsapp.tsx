@@ -113,6 +113,10 @@ export function FloatingWhatsApp() {
               e.stopPropagation()
               setIsOpen(!isOpen)
             }}
+            onMouseDown={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+            }}
             className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer border-2 border-white"
             aria-label="Open contact options"
             type="button"
