@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react"
+import { Star, Quote } from "lucide-react"
 
 interface Testimonial {
   id: number
@@ -106,15 +106,6 @@ export function TestimonialsCarousel() {
     }
   }, [currentIndex])
 
-  const goToPrevious = () => {
-    setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1)
-    setIsAutoPlaying(false)
-  }
-
-  const goToNext = () => {
-    setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1)
-    setIsAutoPlaying(false)
-  }
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
@@ -123,27 +114,10 @@ export function TestimonialsCarousel() {
 
   return (
     <div className="relative">
-      {/* Navigation arrows */}
-      <button
-        onClick={goToPrevious}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
-        aria-label="Previous testimonials"
-      >
-        <ChevronLeft className="h-6 w-6 text-gray-600" />
-      </button>
-      
-      <button
-        onClick={goToNext}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
-        aria-label="Next testimonials"
-      >
-        <ChevronRight className="h-6 w-6 text-gray-600" />
-      </button>
-
       {/* Horizontal scrolling container */}
       <div 
         ref={scrollContainerRef}
-        className="flex overflow-x-hidden gap-6 px-16"
+        className="flex overflow-x-hidden gap-6 w-full"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {testimonials.map((testimonial, index) => (
