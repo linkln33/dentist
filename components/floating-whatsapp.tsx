@@ -35,7 +35,7 @@ export function FloatingWhatsApp() {
   return (
     <>
       {/* Floating Button */}
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50" style={{ zIndex: 9999, pointerEvents: 'auto' }}>
         <div className="relative">
           {/* Chat Options Panel */}
           {isOpen && (
@@ -97,8 +97,9 @@ export function FloatingWhatsApp() {
           {/* Main Floating Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+            className="w-12 h-12 md:w-14 md:h-14 bg-green-600 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer"
             aria-label="Open contact options"
+            type="button"
           >
             {isOpen ? (
               <X className="h-5 w-5 md:h-6 md:w-6" />
