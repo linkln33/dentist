@@ -1,0 +1,16 @@
+# Netlify redirects for Next.js static export
+# Handle client-side routing for SPA behavior
+
+# Redirect all routes to index.html for client-side routing
+/*    /index.html   200
+
+# Specific redirects for better SEO
+/services    /services/    301
+/about       /about/       301
+/contact     /contact/     301
+/testimonials /testimonials/ 301
+/faq         /faq/         301
+/blog        /blog/        301
+
+# API routes (if needed for future serverless functions)
+/api/*       /api/:splat   200
