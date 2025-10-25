@@ -35,6 +35,14 @@ export function FloatingWhatsAppSimple() {
 
   return (
     <div 
+      onClick={(e) => {
+        console.log('Container clicked')
+        e.stopPropagation()
+      }}
+      onMouseDown={(e) => {
+        console.log('Container mouse down')
+        e.stopPropagation()
+      }}
       style={{
         position: 'fixed !important',
         bottom: '20px !important',
@@ -67,10 +75,17 @@ export function FloatingWhatsAppSimple() {
         </div>
         
         {/* Another debug element */}
-        <div 
-          onClick={() => {
+        <button 
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
             console.log('🔥 DEBUG ELEMENT CLICKED! 🔥')
             alert('DEBUG: Click is working!')
+            setIsOpen(!isOpen)
+          }}
+          onMouseDown={(e) => {
+            e.preventDefault()
+            console.log('Mouse down on debug element')
           }}
           style={{
             position: 'absolute',
@@ -86,11 +101,13 @@ export function FloatingWhatsAppSimple() {
             fontSize: '12px !important',
             fontWeight: 'bold !important',
             zIndex: '100001 !important',
-            cursor: 'pointer !important'
+            cursor: 'pointer !important',
+            border: 'none !important',
+            outline: 'none !important'
           }}
         >
           CLICK ME!
-        </div>
+        </button>
         
         {/* Chat Options Panel */}
         {isOpen && (
@@ -215,9 +232,15 @@ export function FloatingWhatsAppSimple() {
 
         {/* Main Floating Button */}
         <button
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
             console.log('WhatsApp button clicked, current state:', isOpen)
             setIsOpen(!isOpen)
+          }}
+          onMouseDown={(e) => {
+            e.preventDefault()
+            console.log('Mouse down on WhatsApp button')
           }}
           style={{
             width: '56px',
@@ -231,7 +254,9 @@ export function FloatingWhatsAppSimple() {
             alignItems: 'center',
             justifyContent: 'center',
             boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            position: 'relative',
+            zIndex: '100002'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.backgroundColor = '#15803d'
