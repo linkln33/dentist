@@ -6,7 +6,6 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { 
-  Eye, 
   Shield, 
   Clock, 
   Star, 
@@ -20,7 +19,10 @@ import {
   ArrowDown,
   Calendar,
   MessageCircle,
-  Navigation
+  Navigation,
+  Smile,
+  Sparkles,
+  Circle
 } from "lucide-react"
 import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 import { BookingModal } from "@/components/booking-modal"
@@ -53,27 +55,27 @@ export default function HomePage() {
             <div className="space-y-8 text-white">
               <div className="space-y-6">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
-                  <Eye className="h-5 w-5 text-green-400 mr-2" />
-                  <span className="text-sm font-medium">Professional Eye Care</span>
+                  <Circle className="h-5 w-5 text-blue-400 mr-2" />
+                  <span className="text-sm font-medium">Professional Dental Care</span>
                 </div>
                 
                 <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                  Your Vision is Our
-                  <span className="block bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+                  Your Smile is Our
+                  <span className="block bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                     Priority
                   </span>
                 </h1>
                 
                 <p className="text-xl text-gray-300 leading-relaxed max-w-2xl">
-                  Experience world-class eye care with cutting-edge technology and compassionate treatment. 
-                  Our board-certified specialists are dedicated to preserving and enhancing your vision.
+                  Experience world-class dental care with cutting-edge technology and compassionate treatment. 
+                  Our board-certified dentists are dedicated to preserving and enhancing your oral health.
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg"
-                  className="healthcare-gradient text-white text-lg px-8 py-4 hover:scale-105 transition-transform"
+                  className="dental-gradient text-white text-lg px-8 py-4 hover:scale-105 transition-transform"
                   onClick={() => setIsBookingModalOpen(true)}
                   data-booking-trigger
                 >
@@ -158,15 +160,15 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-              <Eye className="h-4 w-4 mr-2" />
+              <Circle className="h-4 w-4 mr-2" />
               Our Services
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Comprehensive Eye Care
+              Comprehensive Dental Care
               <span className="block text-primary">Solutions</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From routine eye exams to advanced surgical procedures, we provide complete eye care solutions 
+              From routine cleanings to advanced dental procedures, we provide complete oral health solutions 
               for patients of all ages using cutting-edge technology.
             </p>
           </div>
@@ -175,19 +177,19 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                  <Eye className="h-6 w-6 text-white" />
+                  <Circle className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle>Comprehensive Eye Exam</CardTitle>
+                <CardTitle>Dental Cleanings</CardTitle>
                 <CardDescription>
-                  Complete eye health assessment using the latest diagnostic technology
+                  Professional teeth cleaning and preventive care using advanced techniques
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-gray-600">
-                  <li>• Visual acuity testing</li>
-                  <li>• Glaucoma screening</li>
-                  <li>• Retinal examination</li>
-                  <li>• Prescription updates</li>
+                  <li>• Professional cleaning</li>
+                  <li>• Plaque removal</li>
+                  <li>• Fluoride treatment</li>
+                  <li>• Oral health assessment</li>
                 </ul>
               </CardContent>
             </Card>
@@ -195,19 +197,19 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                  <Shield className="h-6 w-6 text-white" />
+                  <Sparkles className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle>LASIK Surgery</CardTitle>
+                <CardTitle>Dental Fillings</CardTitle>
                 <CardDescription>
-                  Advanced laser vision correction for freedom from glasses and contacts
+                  Advanced tooth restoration using modern composite materials
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-gray-600">
-                  <li>• Custom wavefront technology</li>
-                  <li>• Quick recovery time</li>
-                  <li>• 99% success rate</li>
-                  <li>• Lifetime follow-up care</li>
+                  <li>• Tooth-colored fillings</li>
+                  <li>• Quick procedure</li>
+                  <li>• Natural appearance</li>
+                  <li>• Long-lasting results</li>
                 </ul>
               </CardContent>
             </Card>
@@ -215,19 +217,19 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                  <Heart className="h-6 w-6 text-white" />
+                  <Smile className="h-6 w-6 text-white" />
                 </div>
-                <CardTitle>Pediatric Eye Care</CardTitle>
+                <CardTitle>Pediatric Dentistry</CardTitle>
                 <CardDescription>
-                  Specialized eye care for children with a gentle, child-friendly approach
+                  Specialized dental care for children with a gentle, child-friendly approach
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-gray-600">
                   <li>• Child-friendly environment</li>
-                  <li>• Early vision screening</li>
-                  <li>• Amblyopia treatment</li>
-                  <li>• Strabismus correction</li>
+                  <li>• Early dental screening</li>
+                  <li>• Preventive treatments</li>
+                  <li>• Behavior management</li>
                 </ul>
               </CardContent>
             </Card>
@@ -235,7 +237,7 @@ export default function HomePage() {
 
           <div className="text-center mt-12">
             <Link href="/services">
-              <Button size="lg" className="healthcare-gradient text-white">
+              <Button size="lg" className="dental-gradient text-white">
                 View All Services
               </Button>
             </Link>
@@ -254,13 +256,13 @@ export default function HomePage() {
               </div>
               
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-                Meet Dr. Sarah Johnson
-                <span className="block text-primary">Board-Certified Ophthalmologist</span>
+                Meet Dr. Michael Chen
+                <span className="block text-primary">Board-Certified Dentist</span>
               </h2>
               
               <p className="text-xl text-gray-600 leading-relaxed">
-                With over 15 years of experience in comprehensive eye care, Dr. Johnson leads our team 
-                of specialists dedicated to preserving and enhancing your vision health.
+                With over 15 years of experience in comprehensive dental care, Dr. Chen leads our team 
+                of specialists dedicated to preserving and enhancing your oral health and beautiful smile.
               </p>
               
               <div className="grid grid-cols-2 gap-6">
@@ -278,13 +280,13 @@ export default function HomePage() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-2xl font-bold text-primary">25+</h3>
-                  <p className="text-gray-600">Research Papers</p>
+                  <p className="text-gray-600">Dental Procedures</p>
                 </div>
               </div>
               
               <Button 
                 size="lg" 
-                className="healthcare-gradient text-white"
+                className="dental-gradient text-white"
                 onClick={() => scrollToSection('contact')}
               >
                 <Calendar className="h-5 w-5 mr-2" />
@@ -296,7 +298,7 @@ export default function HomePage() {
               <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="Dr. Sarah Johnson - Board Certified Ophthalmologist"
+                  alt="Dr. Michael Chen - Board Certified Dentist"
                   fill
                   className="object-cover"
                 />
@@ -315,10 +317,10 @@ export default function HomePage() {
               Why Choose Us
             </div>
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose EyeCare Clinic?
+              Why Choose SmileCare Dental?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine advanced technology with compassionate care to deliver exceptional results.
+              We combine advanced dental technology with compassionate care to deliver exceptional oral health results.
             </p>
           </div>
 
@@ -329,7 +331,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Board Certified</h3>
               <p className="text-gray-600">
-                Our ophthalmologists are board-certified with extensive training and experience.
+                Our dentists are board-certified with extensive training and experience in oral health.
               </p>
             </div>
 
@@ -339,7 +341,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Latest Technology</h3>
               <p className="text-gray-600">
-                State-of-the-art equipment for accurate diagnosis and effective treatment.
+                State-of-the-art dental equipment for accurate diagnosis and effective treatment.
               </p>
             </div>
 
@@ -359,7 +361,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Patient-Centered Care</h3>
               <p className="text-gray-600">
-                Personalized treatment plans tailored to your unique needs and lifestyle.
+                Personalized dental treatment plans tailored to your unique oral health needs and lifestyle.
               </p>
             </div>
           </div>
@@ -400,7 +402,7 @@ export default function HomePage() {
               Common Questions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find answers to the most frequently asked questions about our eye care services and procedures.
+              Find answers to the most frequently asked questions about our dental services and procedures.
             </p>
           </div>
 
@@ -408,44 +410,44 @@ export default function HomePage() {
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="exam-frequency" className="bg-gray-50 rounded-lg border border-gray-200">
                 <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                  <span className="font-semibold text-gray-900">How often should I have an eye exam?</span>
+                  <span className="font-semibold text-gray-900">How often should I visit the dentist?</span>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4">
                   <p className="text-gray-600 leading-relaxed">
-                    Adults should have a comprehensive eye exam every 1-2 years, or more frequently if you have existing eye conditions, diabetes, or a family history of eye disease. Children should have their first eye exam at 6 months, then at 3 years, and before starting school.
+                    Adults should visit the dentist every 6 months for regular cleanings and checkups. Children should have their first dental visit by age 1, then every 6 months. Patients with gum disease or other oral health issues may need more frequent visits.
                   </p>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="lasik-candidate" className="bg-gray-50 rounded-lg border border-gray-200">
                 <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                  <span className="font-semibold text-gray-900">Am I a good candidate for LASIK?</span>
+                  <span className="font-semibold text-gray-900">What should I do if I have a dental emergency?</span>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4">
                   <p className="text-gray-600 leading-relaxed">
-                    Good LASIK candidates are typically over 18, have stable vision for at least one year, have healthy eyes, and have realistic expectations. We perform a thorough evaluation to determine if LASIK is right for you.
+                    For dental emergencies like severe tooth pain, knocked-out teeth, or broken teeth, contact us immediately. We provide emergency dental services and will see you as soon as possible. For after-hours emergencies, call our emergency line.
                   </p>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="cataract-timing" className="bg-gray-50 rounded-lg border border-gray-200">
                 <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                  <span className="font-semibold text-gray-900">When should I consider cataract surgery?</span>
+                  <span className="font-semibold text-gray-900">How can I prevent cavities?</span>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4">
                   <p className="text-gray-600 leading-relaxed">
-                    Cataract surgery is typically recommended when cataracts significantly affect your daily activities, such as driving, reading, or watching TV. We'll help you determine the right timing based on your symptoms and lifestyle needs.
+                    Prevent cavities by brushing twice daily with fluoride toothpaste, flossing daily, limiting sugary foods and drinks, and visiting your dentist regularly. We also offer fluoride treatments and dental sealants for additional protection.
                   </p>
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="pediatric-exam" className="bg-gray-50 rounded-lg border border-gray-200">
                 <AccordionTrigger className="px-6 py-4 text-left hover:no-underline">
-                  <span className="font-semibold text-gray-900">At what age should children have their first eye exam?</span>
+                  <span className="font-semibold text-gray-900">At what age should children have their first dental visit?</span>
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4">
                   <p className="text-gray-600 leading-relaxed">
-                    The American Academy of Ophthalmology recommends that children have their first comprehensive eye exam at 6 months of age, then at 3 years, and before starting school. Earlier screening may be needed if there are concerns about vision development.
+                    Children should have their first dental visit by age 1, or within 6 months of their first tooth appearing. Early dental visits help establish good oral health habits and prevent future problems.
                   </p>
                 </AccordionContent>
               </AccordionItem>
@@ -465,7 +467,7 @@ export default function HomePage() {
             <div className="text-center mt-12">
               <Button 
                 size="lg" 
-                className="healthcare-gradient text-white"
+                className="dental-gradient text-white"
                 onClick={() => scrollToSection('contact')}
               >
                 <MessageCircle className="h-5 w-5 mr-2" />
@@ -530,7 +532,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="healthcare-gradient text-white text-lg px-8 py-4"
+                  className="dental-gradient text-white text-lg px-8 py-4"
                   onClick={() => setIsBookingModalOpen(true)}
                   data-booking-trigger
                 >
@@ -580,7 +582,7 @@ export default function HomePage() {
                 ></textarea>
                 <Button 
                   type="submit" 
-                  className="w-full healthcare-gradient text-white text-lg py-4"
+                  className="w-full dental-gradient text-white text-lg py-4"
                 >
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Send Message

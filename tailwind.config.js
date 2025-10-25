@@ -50,6 +50,14 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Dental-specific colors
+        dental: {
+          primary: "#1e40af", // Deep blue
+          secondary: "#3b82f6", // Bright blue
+          accent: "#0ea5e9", // Sky blue
+          light: "#dbeafe", // Light blue
+          dark: "#1e3a8a", // Dark blue
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

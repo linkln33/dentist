@@ -3,43 +3,42 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/header'
 import { Footer } from '@/components/footer'
-import { FloatingWhatsAppTest } from '@/components/floating-whatsapp-test'
-import { FloatingWhatsAppSimple } from '@/components/floating-whatsapp-simple'
+import { FloatingWhatsApp } from '@/components/floating-whatsapp'
 import ErrorBoundary from '@/components/error-boundary'
 import { StructuredData } from '@/lib/structured-data'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://krisi-eyes.netlify.app'),
-  title: 'EyeCare Clinic - Professional Eye Care Services | LASIK, Cataract Surgery & Eye Exams',
-  description: 'Expert eye care services including LASIK surgery, cataract treatment, comprehensive eye exams, and pediatric care. Board-certified ophthalmologists with 15+ years experience. Book your appointment today!',
-  keywords: 'eye doctor, ophthalmologist, eye exam, LASIK surgery, cataract treatment, glaucoma care, pediatric eye care, vision correction, eye clinic',
-  authors: [{ name: 'Dr. Sarah Johnson - EyeCare Clinic' }],
-  creator: 'EyeCare Clinic',
-  publisher: 'EyeCare Clinic',
+  metadataBase: new URL('https://smilecaredental.netlify.app'),
+  title: 'SmileCare Dental - Professional Dental Services | Cleanings, Fillings, Crowns & Implants',
+  description: 'Expert dental services including cleanings, fillings, crowns, implants, and pediatric dentistry. Board-certified dentists with 15+ years experience. Book your appointment today!',
+  keywords: 'dentist, dental care, teeth cleaning, dental fillings, crowns, implants, pediatric dentistry, oral health, dental clinic',
+  authors: [{ name: 'Dr. Michael Chen - SmileCare Dental' }],
+  creator: 'SmileCare Dental',
+  publisher: 'SmileCare Dental',
   openGraph: {
-    title: 'EyeCare Clinic - Professional Eye Care Services',
-    description: 'Expert eye care with advanced technology. LASIK surgery, cataract treatment, comprehensive exams, and pediatric care. Book your appointment today!',
+    title: 'SmileCare Dental - Professional Dental Services',
+    description: 'Expert dental care with advanced technology. Cleanings, fillings, crowns, implants, and pediatric dentistry. Book your appointment today!',
     type: 'website',
     locale: 'en_US',
-    url: 'https://krisi-eyes.netlify.app',
-    siteName: 'EyeCare Clinic',
+    url: 'https://smilecaredental.netlify.app',
+    siteName: 'SmileCare Dental',
     images: [
       {
-        url: 'https://krisi-eyes.netlify.app/opengraph-image',
+        url: 'https://smilecaredental.netlify.app/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'EyeCare Clinic - Professional Eye Care Services',
+        alt: 'SmileCare Dental - Professional Dental Services',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'EyeCare Clinic - Professional Eye Care Services',
-    description: 'Expert eye care with advanced technology. LASIK surgery, cataract treatment, comprehensive exams, and pediatric care.',
-    images: ['https://krisi-eyes.netlify.app/opengraph-image'],
+    title: 'SmileCare Dental - Professional Dental Services',
+    description: 'Expert dental care with advanced technology. Cleanings, fillings, crowns, implants, and pediatric dentistry.',
+    images: ['https://smilecaredental.netlify.app/opengraph-image'],
   },
   robots: {
     index: true,
@@ -100,7 +99,7 @@ export default function RootLayout({
                   {children}
                 </main>
                 <Footer />
-                <FloatingWhatsAppTest />
+                <FloatingWhatsApp />
               </ErrorBoundary>
             </body>
     </html>
