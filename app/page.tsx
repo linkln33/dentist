@@ -127,8 +127,8 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                  alt="Modern eye clinic with professional optometry equipment"
+                  src="https://images.unsplash.com/photo-1606811841689-23dfddceeeec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                  alt="Modern dental clinic with professional dental equipment"
                   fill
                   className="object-cover"
                   priority
@@ -297,7 +297,7 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                   alt="Dr. Michael Chen - Board Certified Dentist"
                   fill
                   className="object-cover"

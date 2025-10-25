@@ -21,54 +21,54 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     name: "Sarah Johnson",
-    treatment: "LASIK Surgery",
+    treatment: "Dental Cleaning",
     rating: 5,
-    text: "Dr. Smith performed my LASIK surgery and the results exceeded my expectations. I can see clearly without glasses for the first time in 20 years!",
+    text: "Dr. Chen and his team made my dental cleaning comfortable and thorough. My teeth have never felt cleaner! The office is modern and the staff is incredibly friendly.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "2 weeks ago"
   },
   {
     id: 2,
-    name: "Michael Chen",
-    treatment: "Cataract Surgery",
+    name: "Michael Rodriguez",
+    treatment: "Dental Fillings",
     rating: 5,
-    text: "The staff is incredibly professional and caring. They made my cataract surgery comfortable and stress-free. Highly recommend!",
+    text: "I was nervous about getting fillings, but Dr. Chen made the process painless and quick. The results look natural and I'm very happy with the outcome!",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "1 month ago"
   },
   {
     id: 3,
-    name: "Lisa Rodriguez",
-    treatment: "Pediatric Care",
+    name: "Lisa Chen",
+    treatment: "Pediatric Dentistry",
     rating: 5,
-    text: "My daughter was nervous about her first eye exam, but the pediatric team made it fun and easy. Thank you for your expertise!",
+    text: "My son was terrified of the dentist, but Dr. Chen and his pediatric team made his visit fun and comfortable. Now he actually looks forward to his checkups!",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "3 weeks ago"
   },
   {
     id: 4,
     name: "David Thompson",
-    treatment: "Glaucoma Treatment",
+    treatment: "Crown Restoration",
     rating: 5,
-    text: "I've been coming here for my glaucoma treatment for 3 years. Dr. Johnson's expertise and the latest technology have kept my condition stable.",
+    text: "I needed a crown and was worried about the process. Dr. Chen made it comfortable and the final result looks completely natural. Excellent work!",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "1 week ago"
   },
   {
     id: 5,
     name: "Maria Garcia",
-    treatment: "Comprehensive Exam",
+    treatment: "Emergency Dental Care",
     rating: 5,
-    text: "The comprehensive eye exam was thorough and the equipment is state-of-the-art. I felt confident in the diagnosis and treatment plan.",
+    text: "I had a dental emergency on a weekend and Dr. Chen was able to see me quickly. The pain relief was immediate and the follow-up care was excellent.",
     image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "2 weeks ago"
   },
   {
     id: 6,
     name: "Robert Wilson",
-    treatment: "Retinal Treatment",
+    treatment: "Dental Implants",
     rating: 5,
-    text: "When I was diagnosed with diabetic retinopathy, I was scared. Dr. Johnson explained everything clearly and the treatment was successful.",
+    text: "After years of dental problems, Dr. Chen recommended implants. The process was smooth and the results are amazing. I can eat and smile with confidence again!",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "1 month ago"
   }
