@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
     treatment: "LASIK Surgery",
     rating: 5,
     text: "Dr. Smith performed my LASIK surgery and the results exceeded my expectations. I can see clearly without glasses for the first time in 20 years!",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80",
     date: "2 weeks ago"
   },
   {
@@ -74,56 +74,26 @@ const testimonials: Testimonial[] = [
 ]
 
 export function TestimonialsCarousel() {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
-  // Auto-scroll carousel
-  useEffect(() => {
-    if (!isAutoPlaying) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = prevIndex + 1
-        return nextIndex >= testimonials.length ? 0 : nextIndex
-      })
-    }, 4000) // Change every 4 seconds
-
-    return () => clearInterval(interval)
-  }, [isAutoPlaying])
-
-  // Scroll to current testimonial
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      const container = scrollContainerRef.current
-      const cardWidth = container.offsetWidth / 2 // 2 cards visible
-      const scrollPosition = currentIndex * cardWidth
-      
-      container.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth'
-      })
-    }
-  }, [currentIndex])
-
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index)
-    setIsAutoPlaying(false)
-  }
+  // Create infinite testimonials for continuous scrolling
+  const infiniteTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <div className="relative">
-      {/* Horizontal scrolling container */}
+    <div className="relative overflow-hidden bg-gradient-to-r from-green-50/30 to-blue-50/30 backdrop-blur-sm rounded-2xl p-6">
+      {/* Continuous scrolling container */}
       <div 
-        ref={scrollContainerRef}
-        className="flex overflow-x-hidden gap-6 w-full"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className={`flex gap-6 ${isAutoPlaying ? 'animate-scroll' : ''}`}
+        style={{ 
+          width: 'max-content',
+          animation: isAutoPlaying ? 'scroll 120s linear infinite' : 'none',
+          willChange: 'transform'
+        }}
       >
-        {testimonials.map((testimonial, index) => (
+        {infiniteTestimonials.map((testimonial, index) => (
           <Card 
-            key={testimonial.id} 
-            className="flex-shrink-0 w-1/2 min-w-[400px] p-6 hover:shadow-lg transition-shadow duration-300"
+            key={`${testimonial.id}-${index}`} 
+            className="flex-shrink-0 w-96 p-4 bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white/90"
           >
             <CardContent className="p-0">
               <div className="flex items-center mb-4">
@@ -136,41 +106,27 @@ export function TestimonialsCarousel() {
               </div>
               
               <div className="flex items-start mb-4">
-                <Image
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  width={40}
-                  height={40}
-                  className="rounded-full mr-3 flex-shrink-0"
-                />
+                <div className="w-10 h-10 rounded-full overflow-hidden mr-3 flex-shrink-0">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 <div>
                   <p className="font-semibold text-gray-900">{testimonial.name}</p>
                   <p className="text-sm text-primary">{testimonial.treatment}</p>
                 </div>
               </div>
 
-              <Quote className="h-5 w-5 text-primary mb-3" />
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <Quote className="h-4 w-4 text-primary mb-2" />
+              <p className="text-gray-600 text-sm leading-relaxed line-clamp-4">
                 "{testimonial.text}"
               </p>
             </CardContent>
           </Card>
-        ))}
-      </div>
-
-      {/* Dots indicator */}
-      <div className="flex justify-center space-x-2 mt-8">
-        {testimonials.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentIndex 
-                ? 'bg-primary' 
-                : 'bg-gray-300 hover:bg-gray-400'
-            }`}
-            aria-label={`Go to testimonial ${index + 1}`}
-          />
         ))}
       </div>
 

@@ -93,3 +93,22 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #059669;
 }
+
+/* Testimonials carousel animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Smooth scrolling optimization */
+.animate-scroll {
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
