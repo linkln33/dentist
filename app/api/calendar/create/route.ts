@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     
     const event = await calendar.events.insert({
       calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
-      resource: googleEvent
+      requestBody: googleEvent
     })
     
     console.log('✅ Calendar event created successfully:', event.data.id)
