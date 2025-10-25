@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Star, Quote } from "lucide-react"
+import { TestimonialSkeleton } from "@/components/loading-skeleton"
 
 interface Testimonial {
   id: number
@@ -75,9 +76,30 @@ const testimonials: Testimonial[] = [
 
 export function TestimonialsCarousel() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
   // Create infinite testimonials for continuous scrolling
   const infiniteTestimonials = [...testimonials, ...testimonials, ...testimonials, ...testimonials]
+
+  // Simulate loading delay for skeleton
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="relative overflow-hidden bg-gradient-to-r from-green-50/30 to-blue-50/30 backdrop-blur-sm rounded-2xl p-6">
+        <div className="flex gap-6">
+          {[...Array(3)].map((_, index) => (
+            <TestimonialSkeleton key={index} />
+          ))}
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-r from-green-50/30 to-blue-50/30 backdrop-blur-sm rounded-2xl p-6">

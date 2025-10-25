@@ -12,23 +12,17 @@ export function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   const scrollToSection = (sectionId: string) => {
-    console.log('Scrolling to section:', sectionId) // Debug log
     const element = document.getElementById(sectionId)
-    console.log('Element found:', element) // Debug log
     
     if (element) {
       const headerHeight = 120 // Approximate height of sticky header
       const elementPosition = element.offsetTop - headerHeight
-      
-      console.log('Scrolling to position:', elementPosition) // Debug log
       
       window.scrollTo({
         top: elementPosition,
         behavior: 'smooth'
       })
       setIsMenuOpen(false) // Close mobile menu after clicking
-    } else {
-      console.log('Element not found for ID:', sectionId) // Debug log
     }
   }
 

@@ -12,7 +12,6 @@ export function FloatingWhatsApp() {
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage)
     const whatsappUrl = `https://wa.me/15551234567?text=${encodedMessage}`
-    console.log('WhatsApp URL:', whatsappUrl) // Debug log
     window.location.href = whatsappUrl
   }
 

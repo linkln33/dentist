@@ -68,9 +68,6 @@ export function BookingModal({ isOpen, onClose }: BookingModalProps) {
     
     try {
       // Create Google Calendar event directly
-      console.log('Booking appointment for:', formData.name, 'Date:', selectedDate, 'Time:', selectedTime)
-      
-      // Simple event data without complex date parsing
       const eventData = {
         summary: `${formData.reason} - ${formData.name}`,
         description: `
@@ -92,16 +89,11 @@ IMPORTANT: Please call (555) 123-4567 to confirm this appointment.
         ]
       }
       
-      console.log('Sending event data:', eventData)
-      
       // Create Google Calendar event using the API
       try {
         const result = await createGoogleCalendarEvent(eventData)
-        console.log('Calendar event result:', result)
       } catch (apiError) {
-        console.error('API Error:', apiError)
         // Fallback: just show success message without API call
-        console.log('Using fallback - no API call')
       }
       
       // Show success message
