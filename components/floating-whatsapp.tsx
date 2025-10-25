@@ -36,6 +36,34 @@ export function FloatingWhatsApp() {
 
   return (
     <>
+      {/* DEBUG: Make button very visible */}
+      <div 
+        style={{ 
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 99999,
+          pointerEvents: 'auto',
+          backgroundColor: 'red',
+          width: '100px',
+          height: '100px',
+          border: '5px solid blue'
+        }}
+      >
+        <div style={{ 
+          position: 'absolute', 
+          top: '-30px', 
+          left: '0', 
+          backgroundColor: 'yellow', 
+          color: 'black', 
+          padding: '5px',
+          fontSize: '12px',
+          fontWeight: 'bold'
+        }}>
+          WHATSAPP DEBUG
+        </div>
+      </div>
+      
       {/* Floating Button */}
       <div 
         className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50" 
