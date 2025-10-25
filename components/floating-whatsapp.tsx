@@ -35,7 +35,7 @@ export function FloatingWhatsApp() {
         contactSection.scrollIntoView({ behavior: 'smooth' })
       }
     }
-    setIsOpen(false)
+    setIsOpen(false) // Close the panel
   }
 
   return (
@@ -91,7 +91,7 @@ export function FloatingWhatsApp() {
                 
                 <Button 
                   onClick={handleBookingClick}
-                  className="w-full healthcare-gradient text-white"
+                  className="w-full dental-gradient text-white"
                 >
                   <Calendar className="h-4 w-4 mr-2" />
                   Book Appointment
