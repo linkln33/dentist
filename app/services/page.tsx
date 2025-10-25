@@ -19,11 +19,6 @@ import {
   Calendar
 } from "lucide-react"
 
-export const metadata = {
-  title: 'Eye Care Services - Comprehensive Treatment Options',
-  description: 'Explore our comprehensive eye care services including LASIK surgery, cataract treatment, glaucoma care, and pediatric eye care.',
-}
-
 const services = [
   {
     id: "comprehensive-exam",
