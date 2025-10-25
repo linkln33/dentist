@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 export function FloatingWhatsApp() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const whatsappMessage = "Hi, I'd like to schedule an eye exam appointment. Could you please provide available times?"
+  const whatsappMessage = "Hi, I'd like to schedule a dental appointment. Could you please provide available times?"
 
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(whatsappMessage)
@@ -20,16 +20,22 @@ export function FloatingWhatsApp() {
   }
 
   const handleEmailClick = () => {
-    window.location.href = 'mailto:info@eyecareclinic.com'
+    window.location.href = 'mailto:info@smilecaredental.com'
   }
 
   const handleBookingClick = () => {
-    // Scroll to contact section for booking
-    const contactSection = document.getElementById('contact')
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' })
+    // Open booking modal by triggering the booking modal component
+    const bookingButton = document.querySelector('[data-booking-trigger]') as HTMLButtonElement
+    if (bookingButton) {
+      bookingButton.click()
+    } else {
+      // Fallback: scroll to contact section
+      const contactSection = document.getElementById('contact')
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' })
+      }
     }
-    setIsOpen(false) // Close the panel
+    setIsOpen(false)
   }
 
   return (
